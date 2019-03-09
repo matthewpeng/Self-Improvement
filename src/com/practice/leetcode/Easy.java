@@ -3,7 +3,7 @@ package com.practice.leetcode;
 /**
  * @author: ex_pengyw
  * @Date: 2019/3/9 16:12
- * @Description:
+ * @Description: leetCode 简单题
  */
 public class Easy {
 

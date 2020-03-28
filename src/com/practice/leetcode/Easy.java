@@ -3,7 +3,7 @@ package com.practice.leetcode;
 import java.util.ArrayList;
 
 /**
- * @author: ex_pengyw
+ * @author: Matthew
  * @Date: 2019/3/9 16:12
  * @Description: leetCode 简单题 https://leetcode-cn.com/problemset/all/?difficulty=%E7%AE%80%E5%8D%95
  */

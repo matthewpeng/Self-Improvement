@@ -19,8 +19,21 @@ public class Easy {
 
 
         //9. 回文数
-        System.out.println(isPalindrome(-121));
+        //System.out.println(isPalindrome(-121));
+
+        //13. 罗马数字转整数
+        System.out.println(romanToInt("III")+"");
     }
+
+    /**
+     * 13. 罗马数字转整数
+     */
+
+    public static int romanToInt(String s) {
+
+        return 0;
+    }
+
 
     /**
      * 9. 回文数
@@ -41,7 +54,7 @@ public class Easy {
         String s = String.valueOf(x);
         char[] chars = s.toCharArray();
         for (int i = 0; i < chars.length / 2; i++) {
-            if (chars[i] != chars[chars.length - 1-i]) {
+            if (chars[i] != chars[chars.length - 1 - i]) {
                 return false;
             }
         }

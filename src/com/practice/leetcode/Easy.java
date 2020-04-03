@@ -1,8 +1,6 @@
 package com.practice.leetcode;
 
-import com.sun.org.apache.bcel.internal.generic.ATHROW;
-
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * @author: Matthew
@@ -24,20 +22,53 @@ public class Easy {
         //System.out.println(isPalindrome(-121));
 
         //13. 罗马数字转整数
-        System.out.println("罗马数字转整数:" + romanToInt("III"));
-        System.out.println("罗马数字转整数:" + romanToInt("IV"));
-        System.out.println("罗马数字转整数:" + romanToInt("IX"));
-        System.out.println("罗马数字转整数:" + romanToInt("LVIII"));
-        System.out.println("罗马数字转整数:" + romanToInt("MCMXCIV"));
+//        System.out.println("罗马数字转整数:" + romanToInt("III"));
+//        System.out.println("罗马数字转整数:" + romanToInt("IV"));
+//        System.out.println("罗马数字转整数:" + romanToInt("IX"));
+//        System.out.println("罗马数字转整数:" + romanToInt("LVIII"));
+//        System.out.println("罗马数字转整数:" + romanToInt("MCMXCIV"));
+
+        //14. 最长公共前缀
+        System.out.println(longestCommonPrefix(new String[]{"flower", "flow", "flight"}));
+        System.out.println(longestCommonPrefix(new String[]{"dog", "racecar", "car"}));
+
+
     }
 
     /**
+     * 14. 最长公共前缀
+     *      假设第一个就是 逐个比较
+     */
+    public static String longestCommonPrefix(String[] strs) {
+        if (strs.length==0){
+            return  "";
+        }
+        //取第一个值假设他就是公共的
+        String ans = strs[0];
+        for (int i = 1; i < strs.length; i++) {
+            char[] chars = strs[i].toCharArray();
+            char[] ansArr = ans.toCharArray();
+            for (int j = 0; j < chars.length; j++) {
+                for (int k = 0; k < ansArr.length; k++) {
+                    //和第二个比较
+                    if (chars[j]!=ansArr[j]){
+                        return ans.substring(0,j);
+                    }
+                }
+            }
+        }
+
+        return ans;
+    }
+
+
+    /**
      * 13. 罗马数字转整数
-     *     数组中间隔比较大小
-     *     先取出第一位
-     *     然后和第二位比较
-     *     比较完毕之后 把第二位的值赋值给先取出第一位的变量
-     *     继续比较第三位 .....
+     * 数组中间隔比较大小
+     * 先取出第一位
+     * 然后和第二位比较
+     * 比较完毕之后 把第二位的值赋值给先取出第一位的变量
+     * 继续比较第三位 .....
      */
 
     public static int romanToInt(String s) throws Exception {
@@ -47,7 +78,7 @@ public class Easy {
         for (int i = 1; i < chars.length; i++) {
             int num = turnIntoNumber(chars[i]);
             if (perNum < num) {
-                sum  -= perNum;
+                sum -= perNum;
             } else {
                 sum += perNum;
             }

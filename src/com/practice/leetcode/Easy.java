@@ -1,5 +1,7 @@
 package com.practice.leetcode;
 
+import com.sun.org.apache.bcel.internal.generic.ATHROW;
+
 import java.util.ArrayList;
 
 /**
@@ -9,7 +11,7 @@ import java.util.ArrayList;
  */
 public class Easy {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         //1. 两数之和
         //int[] ints = twoSum(new int[]{3, 3}, 6);
         //System.out.println("answer : " + ints.toString());
@@ -22,16 +24,59 @@ public class Easy {
         //System.out.println(isPalindrome(-121));
 
         //13. 罗马数字转整数
-        System.out.println(romanToInt("III")+"");
+        System.out.println("罗马数字转整数:" + romanToInt("III"));
+        System.out.println("罗马数字转整数:" + romanToInt("IV"));
+        System.out.println("罗马数字转整数:" + romanToInt("IX"));
+        System.out.println("罗马数字转整数:" + romanToInt("LVIII"));
+        System.out.println("罗马数字转整数:" + romanToInt("MCMXCIV"));
     }
 
     /**
      * 13. 罗马数字转整数
+     *     数组中间隔比较大小
+     *     先取出第一位
+     *     然后和第二位比较
+     *     比较完毕之后 把第二位的值赋值给先取出第一位的变量
+     *     继续比较第三位 .....
      */
 
-    public static int romanToInt(String s) {
+    public static int romanToInt(String s) throws Exception {
+        char[] chars = s.toCharArray();
+        int sum = 0;
+        int perNum = turnIntoNumber(chars[0]);
+        for (int i = 1; i < chars.length; i++) {
+            int num = turnIntoNumber(chars[i]);
+            if (perNum < num) {
+                sum  -= perNum;
+            } else {
+                sum += perNum;
+            }
+            perNum = num;
+        }
+        sum += perNum;
 
-        return 0;
+        return sum;
+    }
+
+    private static int turnIntoNumber(char c) throws Exception {
+        switch (c) {
+            case 'I':
+                return 1;
+            case 'V':
+                return 5;
+            case 'X':
+                return 10;
+            case 'L':
+                return 50;
+            case 'C':
+                return 100;
+            case 'D':
+                return 500;
+            case 'M':
+                return 1000;
+            default:
+                throw new Exception("数字非法");
+        }
     }
 
 

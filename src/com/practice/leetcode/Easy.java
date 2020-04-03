@@ -29,19 +29,83 @@ public class Easy {
 //        System.out.println("罗马数字转整数:" + romanToInt("MCMXCIV"));
 
         //14. 最长公共前缀
-        System.out.println(longestCommonPrefix(new String[]{"flower", "flow", "flight"}));
-        System.out.println(longestCommonPrefix(new String[]{"dog", "racecar", "car"}));
+//        System.out.println(longestCommonPrefix(new String[]{"flower", "flow", "flight"}));
+//        System.out.println(longestCommonPrefix(new String[]{"dog", "racecar", "car"}));
 
+        //20. 有效的括号
+        System.out.println(isValid("()"));
+        System.out.println(isValid("()[]{}"));
+        System.out.println(isValid("(]"));
+        System.out.println(isValid("([)]"));
+        System.out.println(isValid("{[]}"));
 
     }
 
     /**
+     * 20. 有效的括号
+     * 栈 传统
+     */
+
+    public static boolean isValid(String s) throws Exception {
+        HashMap<Character, Character> map = new HashMap<>();
+        map.put('}', '{');
+        map.put(']', '[');
+        map.put(')', '(');
+
+        char[] chars = s.toCharArray();
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < chars.length; i++) {
+            char c = chars[i];
+            if (map.containsKey(c)) {
+                char topElement = stack.isEmpty() ? '#' : stack.pop();
+                if (topElement != map.get(c)) {
+                    return false;
+                }
+            } else {
+                stack.push(c);
+            }
+        }
+        return stack.isEmpty();
+    }
+
+
+    public static boolean isValid2(String s) throws Exception {
+        char[] chars = s.toCharArray();
+        int perNum = intoNum(chars[0]);
+        for (int i = 1; i < chars.length; i++) {
+            int num = intoNum(chars[i]);
+            if (perNum == num) {
+                return true;
+            }
+            perNum = num;
+        }
+        return false;
+    }
+
+    private static int intoNum(char c) throws Exception {
+        switch (c) {
+            case '(':
+            case ')':
+                return 1;
+            case '{':
+            case '}':
+                return 2;
+            case '[':
+            case ']':
+                return 3;
+            default:
+                throw new Exception("数字非法");
+        }
+    }
+
+
+    /**
      * 14. 最长公共前缀
-     *      假设第一个就是 逐个比较
+     * 假设第一个就是 逐个比较
      */
     public static String longestCommonPrefix(String[] strs) {
-        if (strs.length==0){
-            return  "";
+        if (strs.length == 0) {
+            return "";
         }
         //取第一个值假设他就是公共的
         String ans = strs[0];
@@ -51,8 +115,8 @@ public class Easy {
             for (int j = 0; j < chars.length; j++) {
                 for (int k = 0; k < ansArr.length; k++) {
                     //和第二个比较
-                    if (chars[j]!=ansArr[j]){
-                        return ans.substring(0,j);
+                    if (chars[j] != ansArr[j]) {
+                        return ans.substring(0, j);
                     }
                 }
             }

@@ -1,5 +1,7 @@
 package com.practice.leetcode;
 
+import javax.swing.*;
+import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -33,17 +35,42 @@ public class Easy {
 //        System.out.println(longestCommonPrefix(new String[]{"dog", "racecar", "car"}));
 
         //20. 有效的括号
-        System.out.println(isValid("()"));
-        System.out.println(isValid("()[]{}"));
-        System.out.println(isValid("(]"));
-        System.out.println(isValid("([)]"));
-        System.out.println(isValid("{[]}"));
+//        System.out.println(isValid("()"));
+//        System.out.println(isValid("()[]{}"));
+//        System.out.println(isValid("(]"));
+//        System.out.println(isValid("([)]"));
+//        System.out.println(isValid("{[]}"));
+
+        //26. 删除排序数组中的重复项
+        System.out.println(removeDuplicates(new int[]{1, 1, 2}));
+        System.out.println(removeDuplicates(new int[]{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}));
+
 
     }
 
+
+    /**
+     * 26. 删除排序数组中的重复项
+     * 双指针比较 取第一个作为第一个指针 与 取第二个作为第二指针对比 遍历第二个指针
+     * 相等就向右移动第二个指针 直到不相等 第一个指针自增  第二个指针的值赋值给第一个指针 again
+     */
+    public static int removeDuplicates(int[] nums) {
+        int j = 0;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[j] != nums[i]) {
+                j++;
+                nums[j] = nums[i];
+            }
+
+        }
+        System.out.println(Arrays.toString(nums));
+        return j+1;
+    }
+
+
     /**
      * 20. 有效的括号
-     * 栈 传统
+     * 栈
      */
 
     public static boolean isValid(String s) throws Exception {
@@ -65,36 +92,6 @@ public class Easy {
             }
         }
         return stack.isEmpty();
-    }
-
-
-    public static boolean isValid2(String s) throws Exception {
-        char[] chars = s.toCharArray();
-        int perNum = intoNum(chars[0]);
-        for (int i = 1; i < chars.length; i++) {
-            int num = intoNum(chars[i]);
-            if (perNum == num) {
-                return true;
-            }
-            perNum = num;
-        }
-        return false;
-    }
-
-    private static int intoNum(char c) throws Exception {
-        switch (c) {
-            case '(':
-            case ')':
-                return 1;
-            case '{':
-            case '}':
-                return 2;
-            case '[':
-            case ']':
-                return 3;
-            default:
-                throw new Exception("数字非法");
-        }
     }
 
 

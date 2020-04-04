@@ -51,7 +51,6 @@ public class Easy {
         map.put('}', '{');
         map.put(']', '[');
         map.put(')', '(');
-
         char[] chars = s.toCharArray();
         Stack<Character> stack = new Stack<>();
         for (int i = 0; i < chars.length; i++) {

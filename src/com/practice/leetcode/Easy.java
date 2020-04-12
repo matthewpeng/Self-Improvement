@@ -6,7 +6,7 @@ import java.util.*;
  * @author: Matthew
  * @Date: 2019/3/9 16:12
  * @Description: leetCode 算法简单题
- *                 https://leetcode-cn.com/problemset/all/?difficulty=%E7%AE%80%E5%8D%95
+ * https://leetcode-cn.com/problemset/all/?difficulty=%E7%AE%80%E5%8D%95
  */
 public class Easy {
 
@@ -55,24 +55,29 @@ public class Easy {
 
 
         //35. 搜索插入位置
-        System.out.println(searchInsert(new int[]{1,3,5,6},5));
-        System.out.println(searchInsert(new int[]{1,3,5,6},2));
-        System.out.println(searchInsert(new int[]{1,3,5,6},7));
-        System.out.println(searchInsert(new int[]{1,3,5,6},0));
+        System.out.println(searchInsert(new int[]{1, 3, 5, 6}, 5));
+        System.out.println(searchInsert(new int[]{1, 3, 5, 6}, 2));
+        System.out.println(searchInsert(new int[]{1, 3, 5, 6}, 7));
+        System.out.println(searchInsert(new int[]{1, 3, 5, 6}, 0));
 
     }
 
     /**
-     * 35. 搜索插入位置
-     *     未在官网验证
+     * 35. 搜索插入位置 二分法
      */
     public static int searchInsert(int[] nums, int target) {
-        for (int i = 0; i < nums.length; i++) {
-            if (target<=nums[i]){
-                return i;
+        int left = 0, right = nums.length - 1;
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            if (nums[mid] == target) {
+                return mid;
+            } else if (nums[mid] < target) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
             }
         }
-        return nums.length;
+        return left;
     }
 
 
@@ -80,9 +85,9 @@ public class Easy {
      * 28. 实现 strStr()
      */
     public static int strStr(String haystack, String needle) {
-        int nl = needle.length(),hl = haystack.length();
-        for (int i = 0; i < hl - nl+1; i++) {
-            if (haystack.substring(i,i+nl).equals(needle)) {
+        int nl = needle.length(), hl = haystack.length();
+        for (int i = 0; i < hl - nl + 1; i++) {
+            if (haystack.substring(i, i + nl).equals(needle)) {
                 return i;
             }
         }

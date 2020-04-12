@@ -47,8 +47,26 @@ public class Easy {
 
 
         //27. 移除元素
-        System.out.println(removeElement(new int[]{3, 2, 2, 3}, 3));
-        System.out.println(removeElement(new int[]{0, 1, 2, 2, 3, 0, 4, 2}, 2));
+//        System.out.println(removeElement(new int[]{3, 2, 2, 3}, 3));
+//        System.out.println(removeElement(new int[]{0, 1, 2, 2, 3, 0, 4, 2}, 2));
+
+        //28. 实现 strStr()
+        System.out.println(strStr("hello","ll"));
+        System.out.println(strStr("aaaaa","bba"));
+
+    }
+
+    /**
+     * 28. 实现 strStr()
+     */
+    public static int strStr(String haystack, String needle) {
+        int nl = needle.length(),hl = haystack.length();
+        for (int i = 0; i < hl - nl+1; i++) {
+            if (haystack.substring(i,i+nl).equals(needle)) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     /**

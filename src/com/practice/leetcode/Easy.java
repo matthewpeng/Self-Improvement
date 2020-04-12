@@ -1,13 +1,12 @@
 package com.practice.leetcode;
 
-import javax.swing.*;
-import java.lang.reflect.Array;
 import java.util.*;
 
 /**
  * @author: Matthew
  * @Date: 2019/3/9 16:12
- * @Description: leetCode 简单题 https://leetcode-cn.com/problemset/all/?difficulty=%E7%AE%80%E5%8D%95
+ * @Description: leetCode 算法简单题
+ *                 https://leetcode-cn.com/problemset/all/?difficulty=%E7%AE%80%E5%8D%95
  */
 public class Easy {
 
@@ -51,10 +50,31 @@ public class Easy {
 //        System.out.println(removeElement(new int[]{0, 1, 2, 2, 3, 0, 4, 2}, 2));
 
         //28. 实现 strStr()
-        System.out.println(strStr("hello","ll"));
-        System.out.println(strStr("aaaaa","bba"));
+//        System.out.println(strStr("hello","ll"));
+//        System.out.println(strStr("aaaaa","bba"));
+
+
+        //35. 搜索插入位置
+        System.out.println(searchInsert(new int[]{1,3,5,6},5));
+        System.out.println(searchInsert(new int[]{1,3,5,6},2));
+        System.out.println(searchInsert(new int[]{1,3,5,6},7));
+        System.out.println(searchInsert(new int[]{1,3,5,6},0));
 
     }
+
+    /**
+     * 35. 搜索插入位置
+     *     未在官网验证
+     */
+    public static int searchInsert(int[] nums, int target) {
+        for (int i = 0; i < nums.length; i++) {
+            if (target<=nums[i]){
+                return i;
+            }
+        }
+        return nums.length;
+    }
+
 
     /**
      * 28. 实现 strStr()

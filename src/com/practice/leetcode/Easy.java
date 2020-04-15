@@ -55,12 +55,25 @@ public class Easy {
 
 
         //35. 搜索插入位置
-        System.out.println(searchInsert(new int[]{1, 3, 5, 6}, 5));
-        System.out.println(searchInsert(new int[]{1, 3, 5, 6}, 2));
-        System.out.println(searchInsert(new int[]{1, 3, 5, 6}, 7));
-        System.out.println(searchInsert(new int[]{1, 3, 5, 6}, 0));
+//        System.out.println(searchInsert(new int[]{1, 3, 5, 6}, 5));
+//        System.out.println(searchInsert(new int[]{1, 3, 5, 6}, 2));
+//        System.out.println(searchInsert(new int[]{1, 3, 5, 6}, 7));
+//        System.out.println(searchInsert(new int[]{1, 3, 5, 6}, 0));
+
+        //38. 外观数列
+        System.out.println(countAndSay(1));
+        System.out.println(countAndSay(4));
 
     }
+
+    /**
+     * 38. 外观数列
+     */
+    public static String countAndSay(int n) {
+
+        return null;
+    }
+
 
     /**
      * 35. 搜索插入位置 二分法
@@ -135,12 +148,12 @@ public class Easy {
      */
 
     public static boolean isValid(String s) throws Exception {
-        HashMap<Character, Character> map = new HashMap<>();
+        HashMap<Character, Character> map = new HashMap<Character, Character>();
         map.put('}', '{');
         map.put(']', '[');
         map.put(')', '(');
         char[] chars = s.toCharArray();
-        Stack<Character> stack = new Stack<>();
+        Stack<Character> stack = new Stack<Character>();
         for (int i = 0; i < chars.length; i++) {
             char c = chars[i];
             if (map.containsKey(c)) {
@@ -286,7 +299,7 @@ public class Easy {
         }
 
         char[] chars = temp.toCharArray();
-        ArrayList<Character> list = new ArrayList<>();
+        ArrayList<Character> list = new ArrayList<Character>();
         for (int i = chars.length - 1; i > -1; i--) {
             list.add(chars[i]);
         }
